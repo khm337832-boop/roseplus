@@ -102,6 +102,15 @@ async def cmd_lang(message: Message, command: CommandObject, bot: Bot) -> None:
 
 
 # ------------------------------------------------------------------ info
+@router.message(Command("hidekb", "keyboardoff", "nokb"))
+async def cmd_hidekb(message: Message, bot: Bot) -> None:
+    """group မှာ အရင်က ပို့ထားတဲ့ reply-keyboard ကို ဖျောက်တယ် (admin ပဲ)။"""
+    lang = await lang_of(message)
+    if message.chat.type != "private" and not await require_admin(bot, message, lang, i18n.t):
+        return
+    await message.reply(i18n.t(lang, "kb_hidden"), reply_markup=ReplyKeyboardRemove())
+
+
 @router.message(Command("id"))
 async def cmd_id(message: Message) -> None:
     lang = await lang_of(message)
