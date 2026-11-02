@@ -191,5 +191,20 @@
   "toggle_off": "🔴 {name} turned OFF",
   "added_group": "🌸 Thanks for adding <b>{bot}</b> to <b>{chat}</b>!\n\n⚠️ Please make me an <b>admin</b> so I can work.\nThen tap the button below — 3 taps and you're set 👇",
   "added_group_btn": "🚀 Set me up",
-  "now_admin": "✅ Thanks for the admin rights! You can now switch on protections 👇"
+  "now_admin": "✅ Thanks for the admin rights! You can now switch on protections 👇",
+  "gate_text": "🔒 <b>Please join first</b>\n\nTo use me, please <b>join</b> the channel below 👇\n\nAfter joining, tap <b>“🔄 Check again”</b>.",
+  "gate_btn_join": "📢 Join the channel",
+  "gate_btn_check": "🔄 Check again",
+  "gate_ok": "✅ Thank you! You can use me now 🎉\nSend /menu to start.",
+  "gate_not_yet": "⚠️ You haven't joined yet — join the channel, then tap again.",
+  "gate_private_hint": "📢 Tap the button below to join the channel.",
+  "kb_quick": "🚀 Setup",
+  "kb_help": "🛡️ Help",
+  "kb_settings": "⚙️ Settings",
+  "kb_lang": "🌐 Language",
+  "kb_rules": "📜 Rules",
+  "kb_id": "🆔 ID",
+  "kb_hide": "🔽 Hide keyboard",
+  "kb_shown": "⌨️ Keyboard is on — just tap the buttons.",
+  "kb_hidden": "✅ Keyboard hidden. Send /menu to bring it back."
 }

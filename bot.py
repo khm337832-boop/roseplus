@@ -25,6 +25,7 @@ from plugins import (
     content,
     core,
     federation,
+    gate,
     greetings,
     menu,
     moderation,
@@ -136,11 +137,14 @@ async def main() -> None:
     dp = Dispatcher()
 
     # middleware
+    if config.force_sub_enabled():
+        dp.message.outer_middleware(gate.ForceJoinMiddleware())
+        dp.callback_query.outer_middleware(gate.ForceJoinMiddleware())
     dp.message.outer_middleware(DisabledCommandMiddleware())
     dp.message.outer_middleware(register_chat_middleware)
 
     # router အစဉ်လိုက် — watcher က နောက်ဆုံး
-    for router in (core.router, menu.router, settings.router, moderation.router, antispam.router,
+    for router in (gate.router, core.router, menu.router, settings.router, moderation.router, antispam.router,
                    captcha.router, greetings.router, content.router, federation.router,
                    watcher.router):
         dp.include_router(router)
@@ -155,6 +159,8 @@ async def main() -> None:
     await bot.set_my_commands(COMMANDS)
     log.info("🤖 Goii Auto Bot started as @%s (%s)", me.username, me.id)
     log.info("   Default language: %s | DB backend: %s", config.DEFAULT_LANG, db.backend_name())
+    if config.force_sub_enabled():
+        log.info("   Force-join: %s (မဝင်ရင် bot ကို မသုံးနိုင်)", config.FORCE_SUB_CHANNEL)
 
     try:
         await dp.start_polling(bot, allowed_updates=dp.resolve_used_update_types())

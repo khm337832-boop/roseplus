@@ -39,14 +39,17 @@ async def cmd_start(message: Message, bot: Bot) -> None:
         stored = await db.get_user_lang(message.from_user.id)
         if stored:
             lang = stored
-    from plugins.menu import main_keyboard
+    from plugins.menu import main_keyboard, send_reply_keyboard
 
     text = i18n.t(lang, "start", name=name_of(message.from_user), bot=BOT_NAME)
     markup = main_keyboard(lang, message.chat.type != "private", with_close=False)
     if message.chat.type != "private":
         await message.reply(text, reply_markup=markup)
+        if message.from_user and await is_admin(bot, message.chat.id, message.from_user.id):
+            await send_reply_keyboard(message, lang)
         return
     await message.answer(text, reply_markup=markup)
+    await send_reply_keyboard(message, lang)
 
 
 @router.message(Command("help"))

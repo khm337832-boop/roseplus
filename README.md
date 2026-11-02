@@ -10,6 +10,30 @@
 
 ---
 
+## 🎛️ Button-first UI (command မကျက်ရဘူး)
+
+| ဘာလုပ်ချင်လဲ | လုပ်ရမှာ |
+|---|---|
+| button panel ဖွင့် | `/menu` (သို့) အောက်က keyboard ကို နှိပ် |
+| ၄ ဆင့်နဲ့ အသင့်ဖြစ် | `/quick` · `🚀 စတင်နည်း` |
+| Welcome / Captcha / Anti-spam | `⚙️ Settings` သို့ `🚀 စတင်နည်း` ထဲက 🟢/🔴 button |
+| Keyboard ဖျောက် | `🔽 Keyboard ဖျောက်` |
+
+`/start` သို့ `/menu` ရိုက်ရင် စာရိုက်တဲ့နေရာ အောက်မှာ icon keyboard အမြဲပေါ်နေမယ်
+(မြန်မာ/English ဘာသာအလိုက် အလိုအလျောက် ပြောင်း)။
+
+## 🔒 Force-join (channel join မလုပ်ရင် သုံးမရ)
+
+```
+FORCE_SUB=on
+FORCE_SUB_CHANNEL=@your_channel
+FORCE_SUB_URL=https://t.me/your_channel
+```
+
+- bot ကို အဲ့ **channel မှာ admin** ပေးထားရမယ် (မဟုတ်ရင် membership စစ်လို့ မရဘဲ force-join က ခေတ္တ ပိတ်နေမယ်)
+- `OWNER_ID` က အမြဲ ကင်းလွတ်တယ်
+- join မလုပ်ရင် "📢 join မယ်" + "🔄 စစ်ဆေးမယ်" buttonြပြီး တခြား command အားလုံး ပိတ်ထားတယ်
+
 ## ၁။ ဘာ feature တွေ ပါလဲ
 
 ### Moderation

@@ -36,3 +36,13 @@ JOB_INTERVAL: int = int(os.getenv("JOB_INTERVAL", "20"))
 
 # ---- Command တစ်ခုကို တစ်ယောက်တည်း ဘယ်လောက် မြန်ဆန်စွာ ခေါ်နိုင်မလဲ (anti-flood for commands) ----
 COMMAND_COOLDOWN: float = float(os.getenv("COMMAND_COOLDOWN", "0"))
+
+# ---- Force-join (channel join မလုပ်ရင် bot ကို မသုံးနိုင်အောင်) ----
+# FORCE_SUB=off  ဆိုရင် ပိတ်မယ်။ Channel ရဲ့ @username ကို ထည့်ပါ။
+FORCE_SUB: str = os.getenv("FORCE_SUB", "on").strip().lower()
+FORCE_SUB_CHANNEL: str = os.getenv("FORCE_SUB_CHANNEL", "@goiiautobot").strip()
+FORCE_SUB_URL: str = os.getenv("FORCE_SUB_URL", "https://t.me/goiiautobot").strip()
+
+
+def force_sub_enabled() -> bool:
+    return FORCE_SUB not in ("off", "0", "false", "no", "")

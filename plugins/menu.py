@@ -11,7 +11,10 @@ from aiogram.types import (
     ChatMemberUpdated,
     InlineKeyboardButton,
     InlineKeyboardMarkup,
+    KeyboardButton,
     Message,
+    ReplyKeyboardMarkup,
+    ReplyKeyboardRemove,
 )
 
 import db
@@ -83,6 +86,47 @@ def quick_keyboard(lang: str, settings: dict) -> InlineKeyboardMarkup:
     ])
 
 
+def _labels(lang: str) -> dict[str, str]:
+    """Reply-keyboard button စာသားတွေ → action နာမည်။"""
+    return {
+        "quick": i18n.t(lang, "kb_quick"),
+        "settings": i18n.t(lang, "kb_settings"),
+        "help": i18n.t(lang, "kb_help"),
+        "lang": i18n.t(lang, "kb_lang"),
+        "rules": i18n.t(lang, "kb_rules"),
+        "id": i18n.t(lang, "kb_id"),
+        "hide": i18n.t(lang, "kb_hide"),
+    }
+
+
+def reply_keyboard(lang: str) -> ReplyKeyboardMarkup:
+    """စာရိုက်တဲ့နေရာ အောက်မှာ အမြဲပေါ်နေတဲ့ keyboard (icon လှလှလေးတွေနဲ့)။"""
+    lb = _labels(lang)
+    return ReplyKeyboardMarkup(
+        keyboard=[
+            [KeyboardButton(text=lb["quick"]), KeyboardButton(text=lb["settings"])],
+            [KeyboardButton(text=lb["help"]), KeyboardButton(text=lb["lang"])],
+            [KeyboardButton(text=lb["rules"]), KeyboardButton(text=lb["id"])],
+            [KeyboardButton(text=lb["hide"])],
+        ],
+        resize_keyboard=True,
+        is_persistent=True,
+        input_field_placeholder=f"{BOT_NAME} 🌸",
+    )
+
+
+async def is_reply_button(message: Message) -> bool:
+    """ဒီစာသားက reply-keyboard button လား (မြန်မာ/English နှစ်မျိုးလုံး စစ်)။"""
+    if not message.text:
+        return False
+    text = message.text.strip()
+    return any(text == label for lng in ("my", "en") for label in _labels(lng).values())
+
+
+async def send_reply_keyboard(message: Message, lang: str) -> None:
+    await message.answer(i18n.t(lang, "kb_shown"), reply_markup=reply_keyboard(lang))
+
+
 def menu_text(lang: str) -> str:
     return i18n.t(lang, "menu_title", bot=BOT_NAME)
 
@@ -107,14 +151,17 @@ def help_text(lang: str, section: str) -> str:
 
 
 # ----------------------------------------------------------------- commands
-@router.message(Command("menu", "buttons"))
-async def cmd_menu(message: Message) -> None:
+@router.message(Command("menu", "buttons", "keyboard"))
+async def cmd_menu(message: Message, bot: Bot) -> None:
     lang = await chat_lang(message.chat.id)
     markup = main_keyboard(lang, message.chat.type != "private")
     if message.chat.type == "private":
         await message.answer(menu_text(lang), reply_markup=markup)
-    else:
-        await message.reply(menu_text(lang), reply_markup=markup)
+        await send_reply_keyboard(message, lang)
+        return
+    if message.from_user and await is_admin(bot, message.chat.id, message.from_user.id):
+        await send_reply_keyboard(message, lang)
+    await message.reply(menu_text(lang), reply_markup=markup)
 
 
 @router.message(Command("quick", "start_here", "easy"))
@@ -125,6 +172,46 @@ async def cmd_quick(message: Message) -> None:
         await message.answer(quick_text(lang), reply_markup=quick_keyboard(lang, settings))
     else:
         await message.reply(quick_text(lang), reply_markup=quick_keyboard(lang, settings))
+
+
+# ----------------------------------------------------------------- reply-keyboard buttons
+@router.message(F.text, is_reply_button)
+async def on_reply_button(message: Message, bot: Bot) -> None:
+    lang = await chat_lang(message.chat.id)
+    text = (message.text or "").strip()
+    action = ""
+    for lng in ("my", "en"):
+        for act, label in _labels(lng).items():
+            if text == label:
+                action = act
+    settings = await db.get_chat(message.chat.id)
+
+    if action == "hide":
+        await message.answer(i18n.t(lang, "kb_hidden"), reply_markup=ReplyKeyboardRemove())
+        return
+    if action == "quick":
+        await message.reply(quick_text(lang), reply_markup=quick_keyboard(lang, settings))
+        return
+    if action == "help":
+        await message.reply(i18n.t(lang, "help_choose"), reply_markup=help_keyboard(lang))
+        return
+    if action == "settings":
+        from plugins.settings import cmd_settings
+
+        await cmd_settings(message, bot)
+        return
+    if action == "lang":
+        await message.reply(i18n.t(lang, "menu_lang_pick"), reply_markup=lang_keyboard())
+        return
+    if action == "rules":
+        rules = settings.get("rules") or i18n.t(lang, "rules_empty")
+        await message.reply(rules)
+        return
+    if action == "id":
+        uid = message.from_user.id if message.from_user else 0
+        await message.reply(i18n.t(lang, "id_text", chat_id=message.chat.id, user_id=uid))
+        return
+    await message.reply(menu_text(lang), reply_markup=main_keyboard(lang, message.chat.type != "private"))
 
 
 # ----------------------------------------------------------------- bot added to group
