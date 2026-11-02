@@ -209,5 +209,11 @@
   "kb_hidden": "✅ Keyboard ဖျောက်ပြီးပါပြီ။ ပြန်လိုချင်ရင် /menu ရိုက်ပါ။",
   "err_cmd_admin_only": "⛔ ဒီ bot ရဲ့ command တွေကို <b>group admin</b> တွေပဲ သုံးနိုင်ပါတယ်။\nMember တွေက group ထဲ ပုံမှန်အတိုင်း နေလို့ရပါတယ် 🙂",
   "gate_text_admin": "🔒 <b>Admin အတွက်</b> — command တွေ သုံးနိုင်ဖို့ ဒီ channel ကို အရင် join ပါ 👇\n\nJoin ပြီးရင် <b>“🔄 စစ်ဆေးမယ်”</b> ကို နှိပ်ပါ။\n<i>Member တွေကတော့ join စရာ မလိုပါဘူး — ပုံမှန်အတိုင်း နေလို့ရပါတယ်။</i>",
-  "admin_only_note": "ℹ️ Command တွေကို admin တွေပဲ သုံးနိုင်တယ်။ Member တွေက bot ကို သုံးစရာ မလိုပါဘူး။"
+  "admin_only_note": "ℹ️ Command တွေကို admin တွေပဲ သုံးနိုင်တယ်။ Member တွေက bot ကို သုံးစရာ မလိုပါဘူး။",
+  "diag_title": "🩺 <b>စစ်ဆေးချက် (Diagnostics)</b>",
+  "diag_line": "• {label}: <b>{value}</b>",
+  "diag_yes": "✅ ဟုတ်တယ်",
+  "diag_no": "❌ မဟုတ်ဘူး",
+  "diag_unknown": "❓ မစစ်နိုင်ဘူး",
+  "diag_help": "😕 Command တွေ အလုပ်မလုပ်ရင် ဒီစာကို ကျွန်တော့်ဆီ ပို့ပါ — ဘယ်အချက်က လိုနေလဲ ပြောပြပါမယ်။"
 }

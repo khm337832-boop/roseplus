@@ -24,6 +24,7 @@ from plugins import (
     captcha,
     content,
     core,
+    diag,
     federation,
     gate,
     greetings,
@@ -147,7 +148,7 @@ async def main() -> None:
 
     # router အစဉ်လိုက် — watcher က နောက်ဆုံး
     for router in (gate.router, core.router, menu.router, settings.router, moderation.router, antispam.router,
-                   captcha.router, greetings.router, content.router, federation.router,
+                   captcha.router, greetings.router, content.router, diag.router, federation.router,
                    watcher.router):
         dp.include_router(router)
 

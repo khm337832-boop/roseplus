@@ -60,6 +60,23 @@ async def _channel_id(bot: Bot) -> int | None:
     return chat.id
 
 
+async def status(bot: Bot, user_id: int) -> dict:
+    """diagnostic အတွက် force-join အခြေအနေ။"""
+    out: dict = {"enabled": config.force_sub_enabled(), "channel": config.FORCE_SUB_CHANNEL,
+                 "resolvable": False, "member": None}
+    if not out["enabled"]:
+        return out
+    chat_id = await _channel_id(bot)
+    if chat_id is not None:
+        out["resolvable"] = True
+        try:
+            m = await bot.get_chat_member(chat_id, user_id)
+            out["member"] = m.status in ("member", "administrator", "creator")
+        except Exception:
+            out["member"] = None
+    return out
+
+
 async def is_member(bot: Bot, user_id: int) -> bool:
     if not config.force_sub_enabled():
         return True

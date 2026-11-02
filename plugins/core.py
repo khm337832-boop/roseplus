@@ -45,8 +45,6 @@ async def cmd_start(message: Message, bot: Bot) -> None:
     markup = main_keyboard(lang, message.chat.type != "private", with_close=False)
     if message.chat.type != "private":
         await message.reply(text, reply_markup=markup)
-        if message.from_user and await is_admin(bot, message.chat.id, message.from_user.id):
-            await send_reply_keyboard(message, lang)
         return
     await message.answer(text, reply_markup=markup)
     await send_reply_keyboard(message, lang)

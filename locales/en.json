@@ -209,5 +209,11 @@
   "kb_hidden": "✅ Keyboard hidden. Send /menu to bring it back.",
   "err_cmd_admin_only": "⛔ Only <b>group admins</b> can use my commands.\nMembers can just chat normally 🙂",
   "gate_text_admin": "🔒 <b>For admins</b> — please join the channel below before using commands 👇\n\nAfter joining, tap <b>“🔄 Check again”</b>.\n<i>Members don't need to join.</i>",
-  "admin_only_note": "ℹ️ Only admins can use commands. Members don't need the bot at all."
+  "admin_only_note": "ℹ️ Only admins can use commands. Members don't need the bot at all.",
+  "diag_title": "🩺 <b>Diagnostics</b>",
+  "diag_line": "• {label}: <b>{value}</b>",
+  "diag_yes": "✅ Yes",
+  "diag_no": "❌ No",
+  "diag_unknown": "❓ Unknown",
+  "diag_help": "😕 If commands don't work, send this to me — I'll tell you what is missing."
 }

@@ -163,8 +163,7 @@ async def cmd_menu(message: Message, bot: Bot) -> None:
         await message.answer(menu_text(lang), reply_markup=markup)
         await send_reply_keyboard(message, lang)
         return
-    if message.from_user and await is_admin(bot, message.chat.id, message.from_user.id):
-        await send_reply_keyboard(message, lang)
+    # group ထဲမှာ keyboard မပို့ — member တွေ မမြင်ရအောင် (inline panel ပဲ)
     await message.reply(menu_text(lang), reply_markup=markup)
 
 
@@ -182,6 +181,10 @@ async def cmd_quick(message: Message) -> None:
 @router.message(F.text, is_reply_button)
 async def on_reply_button(message: Message, bot: Bot) -> None:
     lang = await chat_lang(message.chat.id)
+    if message.chat.type != "private":
+        # group ထဲမှာ admin မဟုတ်ရင် လုံးဝ ဆိတ်ဆိတ်
+        if not message.from_user or not await is_admin(bot, message.chat.id, message.from_user.id):
+            return
     text = (message.text or "").strip()
     action = ""
     for lng in ("my", "en"):
