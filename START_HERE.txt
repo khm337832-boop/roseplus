@@ -1,0 +1,37 @@
+=====================================================
+  RosePlus Bot - Start Here (ဒီဖိုင်ကနေ စဖတ်ပါ)
+=====================================================
+
+ကွန်ပျူတာပေါ်မှာ စမ်းဖို့ အဆင့် ၃ ဆင့်ပဲ ရှိတယ်။
+
+[၁] Python install လုပ်ပါ (တစ်ခါပဲ)
+    - https://www.python.org/downloads/ ဖွင့်
+    - Download Python နှိပ် → install ဖိုင် run
+    - ★ Windows မှာ "Add python.exe to PATH" ကို အမှတ်ခြစ်ဖို့ မမေ့ပါ ★
+    - Install ပြီးရင် ကွန်ပျူတာ restart (မလိုအပ်တော့ဘူး ဆိုရင် ကျော်)
+
+[၂] BotFather ကနေ token ယူပါ
+    - Telegram → @BotFather → /newbot (bot အသစ်) သို့ /mybots (ရှိပြီးသား)
+    - ရလာတဲ့ token ကို copy ထားပါ (123456789:AAH... ပုံစံ)
+
+[၃] ဒီဖိုင် နှစ်ချက်နှိပ်ပါ (double-click)
+    - Windows:  START_WINDOWS.bat
+    - Mac    :  START_MAC.command   (မဖွင့်ရင် right-click → Open)
+
+    ပထမတစ်ခါ token နဲ့ bot username ကို မေးပါမယ် → paste ပြီး Enter နှိပ်
+    ပြီးရင် bot စ အလုပ်လုပ်ပါမယ်။
+
+    ဒီအကြောင်း ပေါ်လာရင် အောင်ပြီ:
+      🤖 RosePlus started as @your_bot
+
+[၄] Telegram မှာ bot ကို group ထဲ ထည့်ပြီး admin ပေးပါ
+    - https://t.me/သင့်_bot?startgroup=botstart
+    - Group → Administrators → bot → right အားလုံး ပေး
+    - Group ထဲမှာ  /settings  ရိုက်ပါ
+
+-----------------------------------------------------
+ မှတ်ချက်
+ - ဒီ window ဖွင့်ထားမှ bot အလုပ်လုပ်မယ် (ပိတ်ရင် ရပ်မယ်)
+ - ၂၄ နာရီ အလုပ်လုပ်စေချင်ရင် GITHUB_RENDER_DEPLOY.md ကို ဖတ်ပါ
+ - token ကို ဘယ်သူ့ကိုမှ မပေးပါနဲ့
+-----------------------------------------------------

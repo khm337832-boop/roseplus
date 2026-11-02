@@ -1,0 +1,19 @@
+# Render Blueprint — https://render.com/docs/blueprint-spec
+# New + → Blueprint → ဒီ repo ရွေးရင် တစ်ခါတည်း setup ဖြစ်သွားမယ်
+services:
+  - type: web
+    name: roseplus-bot
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /
+    autoDeploy: true
+    envVars:
+      - key: BOT_TOKEN
+        sync: false          # Render dashboard မှာ ကိုယ်တိုင် ထည့်ရမယ်
+      - key: DEFAULT_LANG
+        value: my
+      - key: BOT_USERNAME
+        sync: false
+      - key: DATABASE_URL
+        sync: false          # Supabase / Neon Postgres (မထည့်ရင် SQLite — data ပျက်နိုင်)

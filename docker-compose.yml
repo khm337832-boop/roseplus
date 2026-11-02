@@ -1,0 +1,8 @@
+services:
+  roseplus:
+    build: .
+    container_name: roseplus
+    restart: unless-stopped
+    env_file: .env
+    volumes:
+      - ./data:/app/data
