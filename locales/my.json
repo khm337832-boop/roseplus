@@ -206,5 +206,8 @@
   "kb_id": "🆔 ID",
   "kb_hide": "🔽 Keyboard ဖျောက်",
   "kb_shown": "⌨️ အောက်က keyboard ကို ဖွင့်ပြီးပါပြီ — button နှိပ်ရုံနဲ့ သုံးနိုင်ပါတယ်။",
-  "kb_hidden": "✅ Keyboard ဖျောက်ပြီးပါပြီ။ ပြန်လိုချင်ရင် /menu ရိုက်ပါ။"
+  "kb_hidden": "✅ Keyboard ဖျောက်ပြီးပါပြီ။ ပြန်လိုချင်ရင် /menu ရိုက်ပါ။",
+  "err_cmd_admin_only": "⛔ ဒီ bot ရဲ့ command တွေကို <b>group admin</b> တွေပဲ သုံးနိုင်ပါတယ်။\nMember တွေက group ထဲ ပုံမှန်အတိုင်း နေလို့ရပါတယ် 🙂",
+  "gate_text_admin": "🔒 <b>Admin အတွက်</b> — command တွေ သုံးနိုင်ဖို့ ဒီ channel ကို အရင် join ပါ 👇\n\nJoin ပြီးရင် <b>“🔄 စစ်ဆေးမယ်”</b> ကို နှိပ်ပါ။\n<i>Member တွေကတော့ join စရာ မလိုပါဘူး — ပုံမှန်အတိုင်း နေလို့ရပါတယ်။</i>",
+  "admin_only_note": "ℹ️ Command တွေကို admin တွေပဲ သုံးနိုင်တယ်။ Member တွေက bot ကို သုံးစရာ မလိုပါဘူး။"
 }

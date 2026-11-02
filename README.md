@@ -22,6 +22,13 @@
 `/start` သို့ `/menu` ရိုက်ရင် စာရိုက်တဲ့နေရာ အောက်မှာ icon keyboard အမြဲပေါ်နေမယ်
 (မြန်မာ/English ဘာသာအလိုက် အလိုအလျောက် ပြောင်း)။
 
+## 👮 Command တွေကို admin ပဲ သုံးနိုင်
+
+group/supergroup ထဲမှာ `/ban /warn /lock /settings …` စတဲ့ command တွေကို
+**admin / creator** ပဲ သုံးနိုင်တယ်။ Member က ရိုက်ရင် bot က “⛔ admin တွေပဲ သုံးနိုင်တယ်” ပြန်ပြီး
+ဘာမှ မလုပ်ပါ။ Member တွေ သုံးလို့ရတာ — `/start /help /menu /rules /report /id /ping` ပဲ။
+`OWNER_ID` က အမြဲ ကင်းလွတ်တယ်။
+
 ## 🔒 Force-join (channel join မလုပ်ရင် သုံးမရ)
 
 ```
@@ -31,7 +38,9 @@ FORCE_SUB_URL=https://t.me/your_channel
 ```
 
 - bot ကို အဲ့ **channel မှာ admin** ပေးထားရမယ် (မဟုတ်ရင် membership စစ်လို့ မရဘဲ force-join က ခေတ္တ ပိတ်နေမယ်)
-- `OWNER_ID` က အမြဲ ကင်းလွတ်တယ်
+- **`OWNER_ID` က အမြဲ ကင်းလွတ်တယ်**
+- **group ထဲမှာ — admin တွေပဲ join ရတယ်။** Member တွေကို force-join မနှောင့်ယှက်ပါ (သူတို့ ပုံမှန်အတိုင်း စကားပြောလို့ရတယ်)
+- private chat မှာ bot ကို သုံးတိုင်း join ရတယ်
 - join မလုပ်ရင် "📢 join မယ်" + "🔄 စစ်ဆေးမယ်" buttonြပြီး တခြား command အားလုံး ပိတ်ထားတယ်
 
 ## ၁။ ဘာ feature တွေ ပါလဲ

@@ -27,6 +27,7 @@ from plugins import (
     federation,
     gate,
     greetings,
+    guard,
     menu,
     moderation,
     settings,
@@ -140,6 +141,7 @@ async def main() -> None:
     if config.force_sub_enabled():
         dp.message.outer_middleware(gate.ForceJoinMiddleware())
         dp.callback_query.outer_middleware(gate.ForceJoinMiddleware())
+    dp.message.outer_middleware(guard.AdminOnlyCommandMiddleware())
     dp.message.outer_middleware(DisabledCommandMiddleware())
     dp.message.outer_middleware(register_chat_middleware)
 

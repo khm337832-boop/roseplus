@@ -115,12 +115,16 @@ def reply_keyboard(lang: str) -> ReplyKeyboardMarkup:
     )
 
 
-async def is_reply_button(message: Message) -> bool:
+def is_menu_text(text: str | None) -> bool:
     """ဒီစာသားက reply-keyboard button လား (မြန်မာ/English နှစ်မျိုးလုံး စစ်)။"""
-    if not message.text:
+    if not text:
         return False
-    text = message.text.strip()
+    text = text.strip()
     return any(text == label for lng in ("my", "en") for label in _labels(lng).values())
+
+
+async def is_reply_button(message: Message) -> bool:
+    return is_menu_text(message.text)
 
 
 async def send_reply_keyboard(message: Message, lang: str) -> None:

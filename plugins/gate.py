@@ -24,6 +24,7 @@ import config
 import db
 import i18n
 from common import lang_of
+from helpers import is_admin
 
 log = logging.getLogger("goii.gate")
 router = Router(name="gate")
@@ -87,8 +88,8 @@ def forget(user_id: int) -> None:
     _cache.pop(user_id, None)
 
 
-async def send_gate(message: Message, lang: str) -> None:
-    text = i18n.t(lang, "gate_text")
+async def send_gate(message: Message, lang: str, group: bool = False) -> None:
+    text = i18n.t(lang, "gate_text_admin" if group else "gate_text")
     try:
         await message.answer(text, reply_markup=gate_keyboard(lang), disable_web_page_preview=True)
     except Exception:
@@ -107,16 +108,34 @@ class ForceJoinMiddleware:
             return await handler(event, data)
         if config.OWNER_ID and user.id == config.OWNER_ID:
             return await handler(event, data)
+        in_group = (
+            (isinstance(event, Message) and event.chat.type in ("group", "supergroup"))
+            or (isinstance(event, CallbackQuery) and event.message is not None
+                and event.message.chat.type in ("group", "supergroup"))
+        )
+        if in_group:
+            # ---- group ထဲမှာ admin တွေပဲ စစ်တယ် (member တွေကို မနှောင့်ယှက်) ----
+            from_ = event.from_user
+            chat_id = event.chat.id if isinstance(event, Message) else event.message.chat.id
+            if not await is_admin(bot, chat_id, from_.id):
+                return await handler(event, data)
+            if isinstance(event, Message):
+                text = (event.text or "").strip()
+                from plugins.menu import is_menu_text
+
+                # command (သို့) keyboard button မဟုတ်ရင် ရိုးရိုးစကားပြောတာမို့ မစစ်
+                if not text.startswith("/") and not is_menu_text(text):
+                    return await handler(event, data)
+        lang = await db.get_user_lang(user.id) or config.DEFAULT_LANG
         if await is_member(bot, user.id):
             return await handler(event, data)
-        lang = await db.get_user_lang(user.id) or config.DEFAULT_LANG
         if isinstance(event, CallbackQuery):
             if event.data == "gate:check":
                 return await handler(event, data)
             await event.answer(i18n.t(lang, "gate_not_yet"), show_alert=True)
             raise CancelHandler()
         if isinstance(event, Message):
-            await send_gate(event, lang)
+            await send_gate(event, lang, in_group)
         raise CancelHandler()
 
 
