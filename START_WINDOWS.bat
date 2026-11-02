@@ -1,10 +1,10 @@
 @echo off
 chcp 65001 >nul
-title RosePlus Bot
+title Goii Auto Bot Bot
 cd /d "%~dp0"
 
 echo ==================================================
-echo    RosePlus Bot  -  Automatic Setup ^& Start
+echo    Goii Auto Bot Bot  -  Automatic Setup ^& Start
 echo ==================================================
 echo.
 

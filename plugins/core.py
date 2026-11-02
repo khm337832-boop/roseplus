@@ -18,19 +18,16 @@ from aiogram.types import (
 import db
 import i18n
 from common import chat_lang, lang_of, log_action
-from config import BOT_USERNAME, DEFAULT_LANG, OWNER_ID
+from config import BOT_NAME, BOT_USERNAME, DEFAULT_LANG, OWNER_ID
 from helpers import is_admin, mention, name_of, require_admin
 
 router = Router(name="core")
 
 
 def lang_keyboard() -> InlineKeyboardMarkup:
-    return InlineKeyboardMarkup(
-        inline_keyboard=[[
-            InlineKeyboardButton(text="🇲🇲 မြန်မာ", callback_data="setlang:my"),
-            InlineKeyboardButton(text="🇬🇧 English", callback_data="setlang:en"),
-        ]]
-    )
+    from plugins.menu import lang_keyboard as _lang_keyboard
+
+    return _lang_keyboard()
 
 
 # ------------------------------------------------------------------ start/help
@@ -42,26 +39,27 @@ async def cmd_start(message: Message, bot: Bot) -> None:
         stored = await db.get_user_lang(message.from_user.id)
         if stored:
             lang = stored
+    from plugins.menu import main_keyboard
+
+    text = i18n.t(lang, "start", name=name_of(message.from_user), bot=BOT_NAME)
+    markup = main_keyboard(lang, message.chat.type != "private", with_close=False)
     if message.chat.type != "private":
-        await message.reply(i18n.t(lang, "start", name=name_of(message.from_user),
-                                   bot=BOT_USERNAME), reply_markup=lang_keyboard())
+        await message.reply(text, reply_markup=markup)
         return
-    await message.answer(i18n.t(lang, "start", name=name_of(message.from_user), bot=BOT_USERNAME),
-                         reply_markup=lang_keyboard())
+    await message.answer(text, reply_markup=markup)
 
 
 @router.message(Command("help"))
 async def cmd_help(message: Message, bot: Bot) -> None:
+    """စာရှည်ကြီး တစ်ခါတည်း မပို့ဘဲ — button နဲ့ အပိုင်းလိုက် ကြည့်နိုင်အောင်။"""
+    from plugins.menu import help_keyboard
+
     lang = await lang_of(message)
-    text = "\n\n".join([
-        i18n.t(lang, "help_title", bot=BOT_USERNAME),
-        i18n.t(lang, "help_mod"),
-        i18n.t(lang, "help_antispam"),
-        i18n.t(lang, "help_greetings"),
-        i18n.t(lang, "help_other"),
-        i18n.t(lang, "help_footer"),
-    ])
-    await message.reply(text, disable_web_page_preview=True, reply_markup=lang_keyboard())
+    text = i18n.t(lang, "help_choose")
+    if message.chat.type == "private":
+        await message.answer(text, reply_markup=help_keyboard(lang))
+    else:
+        await message.reply(text, reply_markup=help_keyboard(lang))
 
 
 @router.callback_query(F.data.startswith("setlang:"))
@@ -193,7 +191,7 @@ async def cmd_export(message: Message, bot: Bot) -> None:
     }
     buf = BytesIO(json.dumps(data, ensure_ascii=False, indent=2).encode("utf-8"))
     await message.reply_document(
-        document=("roseplus_settings.json", buf),
+        document=("goii_settings.json", buf),
         caption=i18n.t(lang, "export_done"),
     )
 
@@ -296,7 +294,7 @@ async def cmd_logchannel(message: Message, command: CommandObject, bot: Bot) -> 
         await message.reply("/logchannel @mychannel  (သို့) channel post ကို reply ပြန်ပါ")
         return
     try:
-        await bot.send_message(channel_id, "✅ RosePlus log channel connected.")
+        await bot.send_message(channel_id, "✅ Goii Auto Bot log channel connected.")
     except Exception:
         await message.reply("⚠️ အဲ့ channel ကို ကျွန်တော် message ပို့လို့ မရပါ — admin ပေးပါ။")
         return

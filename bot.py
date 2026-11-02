@@ -1,5 +1,5 @@
 """
-RosePlus — မြန်မာ/English နှစ်ဘာသာ group management bot
+Goii Auto Bot — မြန်မာ/English နှစ်ဘာသာ group management bot
 run:  python bot.py
 """
 from __future__ import annotations
@@ -26,14 +26,17 @@ from plugins import (
     core,
     federation,
     greetings,
+    menu,
     moderation,
     settings,
     watcher,
 )
 
-log = logging.getLogger("roseplus")
+log = logging.getLogger("goii")
 
 COMMANDS = [
+    BotCommand(command="menu", description="🌸 Button menu (အလွယ်ဆုံး)"),
+    BotCommand(command="quick", description="🚀 ၄ ဆင့်နဲ့ အသင့်ဖြစ်အောင်"),
     BotCommand(command="help", description="Command စာရင်း / command list"),
     BotCommand(command="settings", description="⚙️ Settings panel"),
     BotCommand(command="lang", description="🌐 my | en"),
@@ -93,7 +96,7 @@ async def start_health_server() -> asyncio.AbstractServer | None:
     async def handle(reader: asyncio.StreamReader, writer: asyncio.StreamWriter) -> None:
         try:
             await asyncio.wait_for(reader.read(2048), timeout=5)
-            body = b"RosePlus is alive"
+            body = b"Goii Auto Bot is alive"
             writer.write(
                 b"HTTP/1.1 200 OK\r\nContent-Type: text/plain; charset=utf-8\r\n"
                 b"Content-Length: " + str(len(body)).encode() + b"\r\nConnection: close\r\n\r\n" + body
@@ -137,7 +140,7 @@ async def main() -> None:
     dp.message.outer_middleware(register_chat_middleware)
 
     # router အစဉ်လိုက် — watcher က နောက်ဆုံး
-    for router in (core.router, settings.router, moderation.router, antispam.router,
+    for router in (core.router, menu.router, settings.router, moderation.router, antispam.router,
                    captcha.router, greetings.router, content.router, federation.router,
                    watcher.router):
         dp.include_router(router)
@@ -150,7 +153,7 @@ async def main() -> None:
 
     me = await bot.get_me()
     await bot.set_my_commands(COMMANDS)
-    log.info("🤖 RosePlus started as @%s (%s)", me.username, me.id)
+    log.info("🤖 Goii Auto Bot started as @%s (%s)", me.username, me.id)
     log.info("   Default language: %s | DB backend: %s", config.DEFAULT_LANG, db.backend_name())
 
     try:

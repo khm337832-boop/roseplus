@@ -1,4 +1,4 @@
-# 🌸 RosePlus — မြန်မာ/English Group Management Bot
+# 🌸 Goii Auto Bot — မြန်မာ/English Group Management Bot
 
 **@MissRose_bot ရဲ့ feature တွေကို အခြေခံပြီး ကိုယ်ပိုင် server ပေါ်မှာ အခမဲ့ run နိုင်အောင် ရေးထားတဲ့ Telegram group management bot**
 
@@ -87,7 +87,7 @@ python tools/setup_check.py # token + privacy mode + DB အားလုံး �
 pip install -r requirements.txt
 python bot.py
 ```
-Terminal မှာ `🤖 RosePlus started as @yourbot` ပေါ်ရင် အောင်မြင်ပါပြီ။
+Terminal မှာ `🤖 Goii Auto Bot started as @yourbot` ပေါ်ရင် အောင်မြင်ပါပြီ။
 
 ### အဆင့် ၅ — Group ထဲမှာ စမ်းပါ
 ```
@@ -124,7 +124,7 @@ cp .env.example .env && nano .env       # BOT_TOKEN ထည့်
 # 3) systemd service (crash ဖြစ်ရင် auto ပြန် run)
 sudo tee /etc/systemd/system/roseplus.service >/dev/null <<'EOF'
 [Unit]
-Description=RosePlus Telegram Bot
+Description=Goii Auto Bot Telegram Bot
 After=network.target
 
 [Service]
@@ -234,7 +234,7 @@ async def cmd_hello(message: Message) -> None:
 cd roseplus
 git init
 git add .
-git commit -m "RosePlus: bilingual Telegram group management bot"
+git commit -m "Goii Auto Bot: bilingual Telegram group management bot"
 git branch -M main
 git remote add origin https://github.com/<username>/roseplus.git
 git push -u origin main
@@ -255,7 +255,7 @@ git push -u origin main
 4. **Create Web Service**
 
 > Render free က **HTTP port** လိုတယ်။ `bot.py` က `PORT` env ရှိရင် `0.0.0.0:$PORT` မှာ HTTP server ဖွင့်ပြီး
-> `RosePlus is alive` ပြန်ပေးတယ်။ Bot က polling နဲ့ ဆက်အလုပ်လုပ်နေမယ် — webhook မလိုပါ။
+> `Goii Auto Bot is alive` ပြန်ပေးတယ်။ Bot က polling နဲ့ ဆက်အလုပ်လုပ်နေမယ် — webhook မလိုပါ။
 > Deploy ပြီး `https://<app>.onrender.com` ဖွင့်ကြည့်ရင် အဲ့စာသား ပေါ်ရမယ်။
 
 ### ၇.၃ ⚠️ Data မပျောက်အောင် Postgres သုံး (Render free မှာ disk မရှိ)
@@ -286,8 +286,8 @@ Render free က **၁၅ မိနစ် request မဝင်ရင် အိပ
 3. ဒါဆို ၂၄/၇ နိုးနေမယ် (Render free က **750 နာရီ/လ** ကန့်သတ်ချက် ရှိတာမို့ service တစ်ခုပဲ ထားပါ)
 
 ### ၇.၅ စစ်ဆေးခြင်း
-- Render → **Logs** မှာ `🤖 RosePlus started as @your_bot` ပေါ်လား
-- `https://<app>.onrender.com` → `RosePlus is alive`
+- Render → **Logs** မှာ `🤖 Goii Auto Bot started as @your_bot` ပေါ်လား
+- `https://<app>.onrender.com` → `Goii Auto Bot is alive`
 - Telegram → bot ကို group admin ပေး → `/settings` ရိုက်
 
 ### ၇.၆ Update တင်ချင်ရင်

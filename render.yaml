@@ -2,7 +2,7 @@
 # New + → Blueprint → ဒီ repo ရွေးရင် တစ်ခါတည်း setup ဖြစ်သွားမယ်
 services:
   - type: web
-    name: roseplus-bot
+    name: goii-auto-bot
     runtime: docker
     plan: free
     dockerfilePath: ./Dockerfile

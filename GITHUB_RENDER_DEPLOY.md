@@ -52,7 +52,7 @@
 ### ၃.၂ Commit
 1. ဘယ်ဘက်မှာ ဖိုင်တွေ စာရင်း ပေါ်လာမယ် (`bot.py`, `README.md`, …)
 2. ⚠️ **`.env` မပါတာ သေချာအောင် စစ်ပါ** (မရှိရင် ကောင်းတယ်)
-3. အောက်မှာ **Summary**: `RosePlus bot` ရိုက် → **Commit to main** နှိပ်
+3. အောက်မှာ **Summary**: `Goii Auto Bot bot` ရိုက် → **Commit to main** နှိပ်
 
 ### ၃.၃ Publish
 1. အပေါ်က **Publish repository** နှိပ်
@@ -104,13 +104,13 @@ postgresql://postgres:YOURPASSWORD@db.xxxxxxxx.supabase.co:5432/postgres
 
 ### ၅.၂ Blueprint မပေါ်ရင် (Manual)
 1. **New +** → **Web Service** → `roseplus` repo → **Connect**
-2. **Name**: `roseplus-bot`
+2. **Name**: `goii-auto-bot`
 3. **Language/Runtime**: **Docker** (repo ထဲက `Dockerfile` ကို အလိုအလျောက် သုံးမယ်)
 4. **Instance Type**: **Free**
 5. **Environment Variables** — ၅.၁ က ဇယားအတိုင်း ထည့်
 6. **Create Web Service**
 
-> ℹ️ `PORT` ကို Render ကိုယ်တိုင် ပေးတယ် — ထည့်စရာ မလိုပါ။ Bot က အဲ့ port မှာ HTTP server ဖွင့်ပြီး `RosePlus is alive` ပြန်ပေးတယ်။
+> ℹ️ `PORT` ကို Render ကိုယ်တိုင် ပေးတယ် — ထည့်စရာ မလိုပါ။ Bot က အဲ့ port မှာ HTTP server ဖွင့်ပြီး `Goii Auto Bot is alive` ပြန်ပေးတယ်။
 
 ✅ **ရလဒ်** — Render dashboard မှာ service က **Building → Deploying → Live** ဖြစ်လာမယ်
 
@@ -121,12 +121,12 @@ postgresql://postgres:YOURPASSWORD@db.xxxxxxxx.supabase.co:5432/postgres
 1. Render → သင့် service → **Logs** tab
 2. ဒီ ၂ ကြောင်း ရှာပါ:
 ```
-🤖 RosePlus started as @your_bot (8xxxxxxxxxx)
+🤖 Goii Auto Bot started as @your_bot (8xxxxxxxxxx)
    Default language: my | DB backend: postgres
 🌐 health server listening on 0.0.0.0:10000
 ```
-3. Browser မှာ သင့် URL ဖွင့် — `https://roseplus-bot-xxxx.onrender.com`
-   → **`RosePlus is alive`** ပေါ်ရမယ်
+3. Browser မှာ သင့် URL ဖွင့် — `https://goii-auto-bot-xxxx.onrender.com`
+   → **`Goii Auto Bot is alive`** ပေါ်ရမယ်
 
 ✅ **ဒီ ၂ ခု ရရင် bot က cloud ပေါ် ၂၄ နာရီ အလုပ်လုပ်နေပြီ** 🎉
 
@@ -153,8 +153,8 @@ Render free က **၁၅ မိနစ် request မဝင်ရင် အိပ
 1. [uptimerobot.com](https://uptimerobot.com) → **Register for FREE**
 2. **+ Add New Monitor**
    - **Monitor Type**: HTTP(s)
-   - **Friendly Name**: `RosePlus`
-   - **URL**: `https://roseplus-bot-xxxx.onrender.com`
+   - **Friendly Name**: `Goii Auto Bot`
+   - **URL**: `https://goii-auto-bot-xxxx.onrender.com`
    - **Monitoring Interval**: **5 minutes**
 3. **Create Monitor**
 
@@ -210,8 +210,8 @@ Render free က **၁၅ မိနစ် request မဝင်ရင် အိပ
 
 - [ ] GitHub repo မှာ code ရှိ၊ `.env` မပါ
 - [ ] Render status **Live**
-- [ ] Logs မှာ `🤖 RosePlus started` + `DB backend: postgres`
-- [ ] `https://<app>.onrender.com` → `RosePlus is alive`
+- [ ] Logs မှာ `🤖 Goii Auto Bot started` + `DB backend: postgres`
+- [ ] `https://<app>.onrender.com` → `Goii Auto Bot is alive`
 - [ ] UptimeRobot → **Up**
 - [ ] Telegram: bot admin၊ `/settings` ဖြေတယ်
 - [ ] Welcome + CAPTCHA အလုပ်လုပ်တယ်

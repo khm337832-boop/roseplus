@@ -1,5 +1,5 @@
 # fly.io မှာ run ချင်ရင်:  fly launch --no-deploy  →  fly secrets set BOT_TOKEN=...  →  fly deploy
-app = "roseplus-bot"
+app = "goii-auto-bot"
 primary_region = "sin"
 
 [build]

@@ -1,7 +1,7 @@
 #!/bin/bash
 cd "$(dirname "$0")" || exit 1
 echo "=================================================="
-echo "   RosePlus Bot  -  Automatic Setup & Start"
+echo "   Goii Auto Bot Bot  -  Automatic Setup & Start"
 echo "=================================================="
 echo
 

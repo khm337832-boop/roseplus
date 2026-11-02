@@ -1,5 +1,5 @@
 """
-RosePlus — မြန်မာ/English နှစ်ဘာသာ ပံ့ပိုးတဲ့ Telegram group management bot
+Goii Auto Bot — မြန်မာ/English နှစ်ဘာသာ ပံ့ပိုးတဲ့ Telegram group management bot
 config.py — environment configuration
 """
 import os
@@ -22,8 +22,11 @@ DB_PATH: str = os.getenv("DB_PATH", str(BASE_DIR / "data" / "roseplus.db"))
 # ---- Default ဘာသာစကား: my / en ----
 DEFAULT_LANG: str = os.getenv("DEFAULT_LANG", "my")
 
-# ---- Bot username (help စာတွေမှာ @mention ပြဖို့) ----
-BOT_USERNAME: str = os.getenv("BOT_USERNAME", "RosePlusBot")
+# ---- Bot ရဲ့ြသမည့် နာမည် (စာတွေမှာ ဒီနာမည် ပေါ်မယ်) ----
+BOT_NAME: str = os.getenv("BOT_NAME", "Goii Auto Bot")
+
+# ---- Bot username (@mention ပြဖို့) ----
+BOT_USERNAME: str = os.getenv("BOT_USERNAME", "GoiiAutoBot")
 
 # ---- Log level ----
 LOG_LEVEL: str = os.getenv("LOG_LEVEL", "INFO")

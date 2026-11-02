@@ -1,4 +1,4 @@
-# 🪜 RosePlus တင်ခြင်း — တစ်ဆင့်ချင်း လမ်းညွှန်
+# 🪜 Goii Auto Bot တင်ခြင်း — တစ်ဆင့်ချင်း လမ်းညွှန်
 
 > **ဘယ်လို သုံးမလဲ** — အဆင့်တစ်ခုကို အပြီးလုပ်ပြီး "✅ စစ်ဆေးချက်" ကို ဖတ်ပါ။ အဲ့မှာ ပြောထားတာ တွေ့ရင် နောက်တစ်ဆင့် တက်ပါ။
 > မတွေ့ရင် အဲ့အဆင့်ရဲ့ "⚠️ မအောင်ရင်" ကို ကြည့်ပါ။ အားလုံး အတူတူ ၄၅ မိနစ် – ၁ နာရီ လောက် ကြာနိုင်ပါတယ်။ တစ်ခါတည်း အကုန်လုပ်ဖို့ မလိုပါ — ရပ်ပြီး နောက်မှ ဆက်လို့ရပါတယ်။
@@ -114,7 +114,7 @@ python bot.py
 
 ✅ **စစ်ဆေးချက်** — terminal မှာ ဒီလို ပေါ်ရမယ်:
 ```
-🤖 RosePlus started as @your_bot (8xxxxxxxxxx)
+🤖 Goii Auto Bot started as @your_bot (8xxxxxxxxxx)
    Default language: my | DB backend: sqlite
 ```
 ပြီးရင် **terminal ကို မပိတ်ပါနဲ့**။ ဖုန်း/Telegram ကနေ စမ်းပါ:
@@ -150,7 +150,7 @@ Terminal ပြန်ပိတ်လိုက်ရင် bot ရပ်မယ်
 1. GitHub Desktop → **File → Add local repository** → `Desktop\roseplus` ရွေး
    ("not a git repository" ဆိုရင် **create a repository** ကို နှိပ်ပြီး ဆက်ပါ)
 2. ဘယ်ဘက်မှာ ပြောင်းထားတဲ့ ဖိုင်တွေ ပေါ်လာမယ် — **`.env` မပါတာ သေချာအောင် စစ်ပါ** (`.gitignore` က ကာကွယ်ပေးထားတယ်)
-3. Summary မှာ `RosePlus bot` ရိုက် → **Commit to main**
+3. Summary မှာ `Goii Auto Bot bot` ရိုက် → **Commit to main**
 4. အပေါ်က **Publish repository** → **Keep this code private** ✅ (private ထားတာ ပိုကောင်း) → **Publish**
 
 ### နည်း (ခ) — Command line
@@ -158,7 +158,7 @@ Terminal ပြန်ပိတ်လိုက်ရင် bot ရပ်မယ်
 cd Desktop/roseplus
 git init
 git add .
-git commit -m "RosePlus bot"
+git commit -m "Goii Auto Bot bot"
 git branch -M main
 git remote add origin https://github.com/<username>/roseplus.git
 git push -u origin main
@@ -246,12 +246,12 @@ backend: postgres
 1. Render → သင့် service → **Logs** tab
 2. ဒီလို စာတန်း ရှာပါ:
 ```
-🤖 RosePlus started as @your_bot
+🤖 Goii Auto Bot started as @your_bot
    Default language: my | DB backend: postgres
 🌐 health server listening on 0.0.0.0:10000
 ```
-3. ဘရောက်ဇာမှာ သင့် URL ဖွင့်ပါ — `https://roseplus-bot-xxxx.onrender.com`
-   → **`RosePlus is alive`** ပေါ်ရမယ်
+3. ဘရောက်ဇာမှာ သင့် URL ဖွင့်ပါ — `https://goii-auto-bot-xxxx.onrender.com`
+   → **`Goii Auto Bot is alive`** ပေါ်ရမယ်
 
 ✅ ဒီ ၂ ခု တွေ့ရင် **bot က cloud ပေါ်မှာ အလုပ်လုပ်နေပြီ** 🎉
 
@@ -262,7 +262,7 @@ backend: postgres
 | `token မမှန်` / `Unauthorized` | token ပြန် copy (အလွတ်နေရာ ပါ/မပါ စစ်) |
 | `asyncpg` error | Build log ကြည့် — `pip install` အဆင့် ကျော်သွားနိုင်၊ **Clear build cache & deploy** |
 | Build failed | Build log ရဲ့ အနီစာသား ကို copy ယူပြီး ကျွန်တော့်ဆီ ပို့ပါ |
-| `RosePlus is alive` မပေါ် | service Live ဖြစ်ပြီလား၊ URL မှန်/မမှန် စစ် |
+| `Goii Auto Bot is alive` မပေါ် | service Live ဖြစ်ပြီလား၊ URL မှန်/မမှန် စစ် |
 
 ---
 
@@ -273,8 +273,8 @@ Render free က **၁၅ မိနစ် request မဝင်ရင် အိပ
 1. [uptimerobot.com](https://uptimerobot.com) → Register (အခမဲ့)
 2. **Add New Monitor**
    - Monitor Type: **HTTP(s)**
-   - Friendly Name: `RosePlus`
-   - URL: `https://roseplus-bot-xxxx.onrender.com`
+   - Friendly Name: `Goii Auto Bot`
+   - URL: `https://goii-auto-bot-xxxx.onrender.com`
    - Monitoring Interval: **5 minutes**
 3. **Create Monitor**
 
@@ -331,8 +331,8 @@ Button panel က ပေါ်လာမယ် — နှိပ်ပြီး wel
 - [ ] `python tools/setup_check.py` → အားလုံး ✅ (privacy mode ပိတ်ထား)
 - [ ] GitHub repo မှာ code ရှိ၊ **`.env` မပါ**
 - [ ] `tools/db_check.py` → `Database (postgres) အားလုံး အောင်မြင်ပါတယ်`
-- [ ] Render → status **Live**၊ Logs မှာ `🤖 RosePlus started`
-- [ ] `https://<app>.onrender.com` → `RosePlus is alive`
+- [ ] Render → status **Live**၊ Logs မှာ `🤖 Goii Auto Bot started`
+- [ ] `https://<app>.onrender.com` → `Goii Auto Bot is alive`
 - [ ] UptimeRobot → **Up**
 - [ ] Telegram group → bot admin၊ `/settings` ဖြေတယ်
 - [ ] Welcome + CAPTCHA အလုပ်လုပ်တယ်

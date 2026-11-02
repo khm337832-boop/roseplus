@@ -12,4 +12,5 @@ COPY . .
 RUN mkdir -p /app/data
 VOLUME ["/app/data"]
 
-CMD ["python", "bot.py"]
+# PORT မပေးထားရင် 7860 (Hugging Face Spaces default) ကို သုံးမယ်
+CMD ["sh", "-c", "PORT=${PORT:-7860} exec python bot.py"]

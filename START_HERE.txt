@@ -1,5 +1,5 @@
 =====================================================
-  RosePlus Bot - Start Here (ဒီဖိုင်ကနေ စဖတ်ပါ)
+  Goii Auto Bot Bot - Start Here (ဒီဖိုင်ကနေ စဖတ်ပါ)
 =====================================================
 
 ကွန်ပျူတာပေါ်မှာ စမ်းဖို့ အဆင့် ၃ ဆင့်ပဲ ရှိတယ်။
@@ -22,7 +22,7 @@
     ပြီးရင် bot စ အလုပ်လုပ်ပါမယ်။
 
     ဒီအကြောင်း ပေါ်လာရင် အောင်ပြီ:
-      🤖 RosePlus started as @your_bot
+      🤖 Goii Auto Bot started as @your_bot
 
 [၄] Telegram မှာ bot ကို group ထဲ ထည့်ပြီး admin ပေးပါ
     - https://t.me/သင့်_bot?startgroup=botstart
